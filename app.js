@@ -20,11 +20,11 @@ app.post('/api/v1/register', (req, res) => {
 });
 
 // Serve static files from the frontend build directory
-app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+
 
 // Handle all other routes by sending the index.html file
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+app.get("/", (req, res) => {
+    res.send("hello");
 });
 
 const PORT = process.env.PORT || 3000;
