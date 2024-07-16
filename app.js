@@ -19,11 +19,13 @@ app.post('/api/v1/register', (req, res) => {
     res.status(200).json({ message: "User registered successfully" });
 });
 
-// Root endpoint
-app.get("/", (req, res) => {
-    app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+// Serve static files from the frontend build directory
+app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+
+// Handle all other routes by sending the index.html file
+app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-    });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
