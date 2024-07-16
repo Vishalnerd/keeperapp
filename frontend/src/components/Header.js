@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
+import HighlightIcon from '@mui/icons-material/Highlight';
 
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/index";
@@ -16,7 +17,7 @@ function Header() {
     <header>
       <div className="left">
         <Link to={isLoggedIn ? "/note" : "/"}>
-          <h1>Keeper</h1>
+          <h1><HighlightIcon />Keeper</h1>
         </Link>
       </div>
       <div className="right">

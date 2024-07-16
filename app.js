@@ -1,33 +1,47 @@
 const express = require("express");
 const app = express();
+require("./conn/conn");
 const cors = require("cors");
-require("./conn/conn"); // Ensure your database connection is properly established
 const path = require("path");
-const auth = require("./routes/auth");
-const list = require("./routes/list");
 
-app.use(express.json());
-app.use(cors());
+// Import routes
+const authRoutes = require("./routes/auth");
+const listRoutes = require("./routes/list");
 
-// Define your API routes
-app.use("/api/v1", auth); // Assuming auth routes are defined in ./routes/auth
-app.use("/api/v2", list); // Assuming list routes are defined in ./routes/list
+// Middleware
+app.use(express.json()); // Parse incoming JSON requests
+app.use(cors()); // Enable CORS for all requests
+
+
+// API routes
+app.use("/api/v1", authRoutes); // Mount auth routes
+app.use("/api/v2", listRoutes); // Mount list routes
 
 // Handle registration endpoint
 app.post('/api/v1/register', (req, res) => {
-    // Handle registration logic here
+    // Example registration logic (replace with your actual logic)
+    // Save user data to the database, handle errors if any
+    // Return appropriate response to the client
     res.status(200).json({ message: "User registered successfully" });
 });
 
-// Serve static files from the frontend build directory
+// Serve static files (e.g., React frontend)
+const buildPath = path.resolve(__dirname, "./frontend/build");
+app.use(express.static(buildPath));
 
+// Serve index.html for all other routes (client-side routing)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(buildPath, "index.html"));
+});
 
-// Handle all other routes by sending the index.html file
-app.get("/", (req, res) => {
-    res.send("hello");
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something went wrong!");
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
