@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: keeperapp-frontend
+    env: static
+    staticPublishPath: frontend/build
+    buildCommand: cd frontend && npm install && npm run build
