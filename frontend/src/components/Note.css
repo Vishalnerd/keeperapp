@@ -1,0 +1,56 @@
+.note {
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 20px 20px;
+
+  width: 100%;
+  max-width: 300px;
+}
+
+.note h1 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.note p {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  outline: none;
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+}
+
+.Toastify__toast {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 700px) {
+  .note {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .note h1 {
+    font-size: 1.2em;
+  }
+
+  .note p {
+    font-size: 1em;
+  }
+}

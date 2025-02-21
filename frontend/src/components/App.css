@@ -1,0 +1,13 @@
+.note-container {
+  width: 100%;
+  height: max-content;
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .note-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

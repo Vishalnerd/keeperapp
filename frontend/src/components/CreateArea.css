@@ -1,0 +1,84 @@
+.create-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+form {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  resize: none;
+  background: transparent;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 2px solid #e7ae11;
+}
+
+/* Space between inputs */
+textarea {
+  margin-top: 10px;
+}
+
+.fab-button {
+  background-color: #e7ae11 !important;
+  color: white !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 56px; /* Default MUI Fab size */
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fab-button:hover {
+  background-color: #b48609 !important;
+}
+
+.Toastify__toast {
+  font-size: 14px;
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 700px) {
+  .create-note {
+    padding: 15px;
+  }
+
+  form {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
+  }
+
+  .fab-button {
+    right: 10px;
+    bottom: -10px;
+    width: 50px;
+    height: 50px;
+  }
+}
